@@ -1,7 +1,7 @@
 
 
 
-***Indices e subindices do nivel 2
+* Indices e subindices do nivel 2
 Sets
 kk Processos /proc1*proc24/
 tt Periodos /sem1*sem25/
@@ -199,12 +199,12 @@ parameter CustoEnsaque2(kk) Custo adicional entre acucar granel e ensacado - pro
  proc22*proc23  .4, proc24    0/
 ;
 
-***Calculo da matriz de custos agricolas do nivel 2
+* Calculo da matriz de custos agricolas do nivel 2
 parameter delta2(mm) acrescimo do valor da tonelada de cana (R$ por tc)
 /Mprop 0.00, Mforn 7.00/
 ;
 
-**Estimativa de ATR total por tonelada de cana - sem considerar diferenca de tipo de cana
+* Estimativa de ATR total por tonelada de cana - sem considerar diferenca de tipo de cana
 parameter vATR2(tt) Preco (Valor) do ATR R$ por Kg ATR
 /sem1  .2932, sem2  .2932, sem3  .2852, sem4  .2852, sem5  .2852, sem6  .2852
  sem7  .2459, sem8  .2459, sem9  .2459, sem10 .2459, sem11 .2381, sem12 .2381
@@ -256,10 +256,10 @@ Display CM2;
 
 Scalar Matr2 ATR do mel final (%) /0.5738/;
 
-**Estimativa com base na geracao media maxima de 10 MWh em 24 horas
+* Estimativa com base na geracao media maxima de 10 MWh em 24 horas
 scalar Ve2 Valor da energia vendida (R$ por MWh) /145/
 
-**Custos logisticos
+* Custos logisticos
 table Cf2(ff,tt) Custo logistico do cct (R$ por tc)
          sem1*sem25
 Fprop    9.93
@@ -293,7 +293,7 @@ scalar Mmin2 minima por periodo (tc por dia) /6500/ ;
 **6480 significa moagem de 270 tc.hora em 24 horas (moagem diaria)
 
 scalar Mmax2 maxima por periodo (tc por dia) /8000/ ;
-**8160 significa moagem de 340 tc.hora em 24 horas (moagem diaria)
+* 8160 significa moagem de 340 tc.hora em 24 horas (moagem diaria)
 
 parameter rca2(pp) Repasse CRPAAA - adiantamento da cooperativa por produto por periodo (R$ por t ou m3)
 /EspecialUSC  294.0, ExtraUSC  294.0, VHPUSC  281.8, AEACUSC  457.0,     AEHCUSC  438.0/
@@ -331,7 +331,7 @@ scalar Giro02 Saldo de caixa inicio de safra + Capital de giro inicial obtido no
 
 parameter fmax2(ff) capacidade de transporte da frota propria e contratada (tc por dia)
 /Fprop    7000, Fterc 3000/
-**7000 capacidade de transporte da frota propria e da frota contratada - Tudo menos spot
+* 7000 capacidade de transporte da frota propria e da frota contratada - Tudo menos spot
 
 table beta2(ff,tt) Disponibilidade do transporte da frota (%)
          sem1*sem17 sem18*sem25
@@ -343,10 +343,10 @@ parameter cpmax2(pp) capacidade de producao maxima por produto (t ou m3 por dia)
 **Capacidade estimada da producao maxima da USC na safra 2007/08
 
 scalar cfmax2 Capacidade diaria maxima de producao de toda a fabrica de acucar /750/;
-**Capicidade estimada em uma media de 15000 sacos dia
+* Capicidade estimada em uma media de 15000 sacos dia
 
 scalar cdmax2 Capacidade diaria maxima de producao de toda a destilaria /210/  ;
-**Capacidade estimada em uma media diaria de 200.000 litros dia nas duas colunas
+* Capacidade estimada em uma media diaria de 200.000 litros dia nas duas colunas
 
 table Fibra2(mm,tt) Fibra da cana (%)
          sem1  sem2  sem3  sem4  sem5  sem6  sem7  sem8  sem9  sem10 sem11 sem12 sem13 sem14 sem15 sem16 sem17 sem18
@@ -367,13 +367,13 @@ scalar Epb2 Estoque de bagaco para passagem de safra (t de bagaco) /3000/ ;
 
 scalar rc2 Rendimento medio das caldeiras (t vapor por t bagaco) /2.1/ ;
 
-**Valor estimado para rendimento da caldeira na safra - relatorio balanco de turbina
+* Valor estimado para rendimento da caldeira na safra - relatorio balanco de turbina
 scalar rcf2 Rendimento medio da casa de forca (Mwh por t vapor) /.0763/ ;
 
-**Valor medio invertido da unidade de eficiencia kg vapor por kwh - 13.1 kwh/kg vapor - relatorio balanco de turbina
+* Valor medio invertido da unidade de eficiencia kg vapor por kwh - 13.1 kwh/kg vapor - relatorio balanco de turbina
 scalar cfvap2 Consumo fixo de vapor na moagem (t vapor por tc) /.2294/ ;
 
-**Representa a unidade t de vapor por tc dividida - 73.4 tv/hora para moagem e preparo - relatorio balanco de turbina
+* Representa a unidade t de vapor por tc dividida - 73.4 tv/hora para moagem e preparo - relatorio balanco de turbina
 parameter cvap2(pp) Consumo de vapor servido em cada produto (t vapor por t ou m3)
 /EspecialUSC 0.0105
  ExtraUSC    0.0105
@@ -393,10 +393,10 @@ parameter cve2(pp) Consumo de energia em cada produto (MWh por t ou m3)
  AEHCUSC     0.09 /
 ;
 
-**Melhorar calculo de consumo por produto e TALVEZ consumo por processo
+* Melhorar calculo de consumo por produto e TALVEZ consumo por processo
 scalar vapmax2 Producao de maxima de vapor (t vapor por dia) /4920/ ;
 
-**Estimativa com base na geracao media maxima de 205 t vapor hora em 24 horas
+* Estimativa com base na geracao media maxima de 205 t vapor hora em 24 horas
 scalar egmax2 Geracao maxima de energia (MWh por dia) /240/ ;
 
 scalar G2 numero grande /1000000000/
@@ -446,7 +446,7 @@ ProdCristaEquivTotal(u)  Producao total na safra em cristal equivalente
 MetaUSC(p,t) Meta de producao alocada para a USC
 MetaUsina(p,u,t)
 ;
-******Fim da definicao dos parametros do nivel 1
+* Fim da definicao dos parametros do nivel 1
 
 * Parametros de saida nivel 2 - Conv(p)
 parameter ConvAcrpaaa2(ppa) conversao para cristal especial equivalente
@@ -475,7 +475,7 @@ ProdAcucarEquiv2 Producao Fabrica em sacos de cristal equivalente na safra USC
 ProdAlcoolEquiv2 Producao Destilaria em m3 de anidro equivalente na safra USC
 ProdCristaEquivTotal2  Producao total na safra em cristal equivalente
 ProdATRequiv2 Producao total em ATR ;
-***Fim da definicao dos parametros de saida do nivel 2
+* Fim da definicao dos parametros de saida do nivel 2
 
 * Calculo da meta do nivel 2
 parameters
