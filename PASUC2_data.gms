@@ -1,6 +1,3 @@
-
-
-
 * Indices e subindices do nivel 2
 Sets
 kk Processos /proc1*proc24/
@@ -139,20 +136,13 @@ parameter Ar2(tt) Acucares redutores contidos na cana (%)
  sem25 0.9/
 ;
 
-* ok eq (54)  - no artigo nao estah indexado em k
+* no artigo nao estah indexado em w por ser para todo w
 parameters PzaJ2(kk,tt) Pureza do caldo misto (%);
-PzaJ2(kk,tt)=(PzaC2(tt)-1);
-display PzaJ2;
 
 parameter PzaS2(kk) Pureza dos acucares (%) ;
-PzaS2(kk)=Pol2(kk)/(1-(Umid2(kk)/100));
-display PzaS2;
-
 parameter SjM2(kk,tt) Recuperacao de acucares na cristalizacao (unitarizado);
-SjM2(kk,tt)=((PzaS2(kk)*(PzaJ2(kk,tt)-PzaM2)))/(PzaJ2(kk,tt)*(PzaS2(kk)-PzaM2));
-display SjM2;
 
-* ok - eq (57) no artigo nao estah indexado em k
+* no artigo nao estah indexado em k por ser para todo k
 parameter SmF2(kk) Sacarose no mel final (%) ;
 SmF2(kk)=(BMF2*PzaM2)/100;
 display SmF2;
@@ -176,17 +166,17 @@ display Re2;
 parameter A2(pp,kk,tt) Matriz de rendimento dos processos por periodo (t ou m3 por tc);
 A2(pp,kk,tt)=(Ra2(pp,kk,tt) + Re2(pp,kk,tt)) / 1000;
 display  A2;
-***Fim do calculo da matriz de rendimentos do nivel 2
+* Fim do calculo da matriz de rendimentos do nivel 2
 
 
-***Inicio do calculo da matriz de custos industriais do nivel 2
+* Inicio do calculo da matriz de custos industriais do nivel 2
 scalars  cproc2 Custo de producao em R$ por kg ART nos processos da USC /0.03388/
          arm2 Estimativa de acucares redutores no mel final produzido /18/;
 
 parameter Fator2(pp) Fator de correcao para etanol absoluto (adimensional)
 /AEHCUSC 0.95415
  AEACUSC 0.99577/;
-**dado obtido da pg 139 de Fernandes (2003)
+* dado obtido da pg 139 de Fernandes (2003)
 
 parameter CustoEnsaque2(kk) Custo adicional entre acucar granel e ensacado - prod quimicos e mao de obra (u.m. por saco)
 /proc1*proc2    .4, proc3     0
@@ -214,26 +204,9 @@ parameter vATR2(tt) Preco (Valor) do ATR R$ por Kg ATR
 ;
 
 parameter ARTa2(pp,kk,tt) ART dos acucares produzidos Conv(pa k w);
-ARTa2(pp,kk,tt)=(A2(pp,kk,tt)*1000*(pol2(kk)/100)*(1-(Umid2(kk)/100))*MAP2(kk,pp))/0.95;
-
-
 parameter ARTe2(pp,kk,tt) ART do alcoois produzidos   Conv(pd k w) ;
-* equi (57)Producao 2013
-* eq (60) do artigo atual
-ARTe2(pp,kk,tt)=(A2(pp,kk,tt)*1000*Fator2(pp)/(0.6475*0.865));
-display ARTa2, ARTe2;
-
-parameters ARTproc2(kk,tt) somatorio dos ART nos produtos finais em cada processo ;
-* equ (58) Producao 2013
-* eq (62) do artigo atual
-ARTproc2(kk,tt)=sum(pp,(ARTa2(pp,kk,tt) + ARTe2(pp,kk,tt)));
-display ARTproc2;
-
+parameter ARTproc2(kk,tt) somatorio dos ART nos produtos finais em cada processo ;
 parameter CK2(kk,tt) Custo dos processos R$ por tc ;
-Ck2(kk,tt)=ARTproc2(kk,tt)*Cproc2
-* + sum(ppa,A2(ppa,kk,tt)*MAP2(kk,ppa)*20*CustoEnsaque2(kk))
-;
-display CK2;
 
 parameter atr2(tt) Acucares totais recuperaveis da cana fornecida Kg ATR por tc
 /sem1  120.0, sem2  128.0, sem3  132.0, sem4  135.0, sem5  135.0, sem6  136.0
